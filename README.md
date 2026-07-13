@@ -1,6 +1,6 @@
 # AI Text Summarizer
 
-An AI-powered web application that generates concise summaries from long text using a fine-tuned **T5 Transformer** model from Hugging Face.
+An Gen AI-powered web application that generates concise summaries from long text using a fine-tuned **T5 Transformer** model from Hugging Face.
 
 ## Features
 * Summarizes long text into concise content
