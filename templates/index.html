@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Summarizer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1><i class="fa-solid fa-robot"></i> Text Summarizer</h1>
+        <h3 id="tag">Using HuggingFace Transformer</h3><br>
+        <p id="sum-tag">Write or paste your content below for quick summarization.</p><br>
+
+        <form id="summ-input">
+            <textarea id="text-area" placeholder="Enter your content here..." required></textarea>
+            <button class="custom-button" type="submit">Summarize</button><br><br>
+        </form>
+
+        <div class="content-summary">
+            <h3 id="content-summ">Content Summary</h3>
+            <p id="summ-text"></p>
+        </div>
+    </div>
+
+        <script>
+        document.getElementById("summ-input").addEventListener("submit", async (e) => {
+            e.preventDefault();
+        
+            const dialogueInput = document.getElementById("text-area");
+            const summaryText = document.getElementById("summ-text");
+            const submitButton = document.querySelector(".custom-button");
+        
+            const dialogue = dialogueInput.value.trim();
+            if (!dialogue) return;
+        
+            summaryText.innerText = "Processing...";
+            submitButton.disabled = true;
+        
+            try {
+                const response = await fetch("/summarize/", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ dialogue }),
+                });
+        
+                if (!response.ok) {
+                    throw new Error(`Server error: ${response.status}`);
+                }
+        
+                const data = await response.json();
+                summaryText.innerText = data.summary || "No summary returned.";
+            } catch (err) {
+                
+                summaryText.innerText = `Error: ${err.message}`;
+            } finally {
+                
+                submitButton.disabled = false;
+            }
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,4 @@
+myenv/
+__pyache__/
+*.pyc
+.vscode/
