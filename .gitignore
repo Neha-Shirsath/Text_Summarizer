@@ -2,3 +2,4 @@ myenv/
 __pyache__/
 *.pyc
 .vscode/
+saved_summary_model/
