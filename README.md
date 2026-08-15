@@ -39,32 +39,28 @@ The application automatically downloads the model when it starts.
 Text_Summarizer/
 │
 ├── app.py
+
 ├── requirements.txt
+
 ├── .gitignore
+
 ├── static/
 │   └── style.css
+
 └── templates/
     └── index.html
 
 ## Installation
 
-Clone the repository:
-
-git clone https://github.com/Neha-Shirsath/Text_Summarizer.git
+Clone the repository: git clone https://github.com/Neha-Shirsath/Text_Summarizer.git
 
 cd Text_Summarizer
 
-Create a virtual environment:
+Create a virtual environment: python -m venv myenv
 
-python -m venv myenv
+Activate it on Windows: myenv\Scripts\activate
 
-Activate it on Windows:
-
-myenv\Scripts\activate
-
-Install dependencies:
-
-pip install -r requirements.txt
+Install dependencies: pip install -r requirements.txt
 
 ## Run the Application
 
