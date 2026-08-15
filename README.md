@@ -37,6 +37,7 @@ The application automatically downloads the model when it starts.
 ## Project Structure
 
 Text_Summarizer/
+
 │
 ├── app.py
 
